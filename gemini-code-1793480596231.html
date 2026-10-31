@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discord Tracker Report — October 24 – October 30</title>
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --bg-color: #0f1117;
+            --card-bg: #1a1d2e;
+            --card-border: #2a2e45;
+            --accent-cyan: #00d4ff;
+            --accent-yellow: #ffd700;
+            --accent-green: #00ff88;
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+            --badge-crypto: #00d4ff;
+            --badge-sfx: #00ff88;
+            --badge-indicator: #ffd700;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        /* Header Nav */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--card-bg);
+            padding: 16px 24px;
+            border-radius: 12px;
+            border: 1px solid var(--card-border);
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .header-title h1 {
+            font-size: 1.25rem;
+            color: #fff;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .header-title span {
+            color: var(--accent-cyan);
+        }
+
+        .nav-tabs {
+            display: flex;
+            gap: 8px;
+            background: #0f1117;
+            padding: 4px;
+            border-radius: 8px;
+        }
+
+        .nav-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            user-select: none;
+        }
+
+        .nav-btn.active {
+            background: var(--accent-cyan);
+            color: #0f1117;
+        }
+
+        .date-badge {
+            background: rgba(0, 212, 255, 0.1);
+            color: var(--accent-cyan);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* Views */
+        .page-view {
+            display: none;
+        }
+
+        .page-view.active {
+            display: block;
+        }
+
+        /* Stat Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            padding: 18px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+        }
+
+        .stat-card.cyan::before { background: var(--accent-cyan); }
+        .stat-card.yellow::before { background: var(--accent-yellow); }
+        .stat-card.green::before { background: var(--accent-green); }
+        .stat-card.purple::before { background: #a
